@@ -2,7 +2,7 @@
 Title: ApiServletMavenPostgre
 Description: API example using Servlet, CDI, JPA, Maven and Postgresql.
 Author: Eloi Bilek
-Tags: maven, restfull, api, java, jersey
+Tags: maven, restful, api, java, servlet
 Created: 2016 Abr 02
 
 ---
@@ -10,7 +10,7 @@ Created: 2016 Abr 02
 # ApiServletMavenPostgre
 =======================
 
-It 's a very simple example of an RestFull API, CRUD of User.
+It 's a very simple example of an RestFul API, CRUD of User.
 Using:
 * Java 8
 * Maven 3
@@ -27,7 +27,7 @@ This project was started with: New > Maven > Maven Project.
 
 ![new maven project](https://github.com/EloiBilek/eloibilek.github.io/raw/master/SMP/new_maven_project.png)
 
-After importing the project to the Eclipse workspace, run: ApiJerseyMavenPostgre> Maven> Update Project. This will load dependencies.
+After importing the project to the Eclipse workspace, run: ApiServletMavenPostgre> Maven> Update Project. This will load dependencies.
 
 ## Note 2!
 This Project have a DataSource control to the pool of connections (C3P0) in:
