@@ -1,13 +1,10 @@
 package com.apiservletmavenpostgre.model.persistence.dao.common;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import com.apiservletmavenpostgre.config.LocalEntityManagerFactory;
 import com.apiservletmavenpostgre.model.persistence.IOperations;
@@ -17,30 +14,49 @@ import com.apiservletmavenpostgre.model.persistence.IOperations;
  */
 public abstract class AbstractJpaDao<T extends Serializable> extends AbstractDAO<T> implements IOperations<T> {
 
-	private EntityManager em = LocalEntityManagerFactory.createEntityManager();
+	private EntityManager em;
 
+	@SuppressWarnings("unchecked")
 	public T findById(final long id) {
-		return em.find(clazz, Long.valueOf(id));
+		Object obj = null;
+		try {
+			em = LocalEntityManagerFactory.createEntityManager();
+			obj = em.find(clazz, Long.valueOf(id));
+			em.close();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			em.close();
+		}
+		return (T) obj;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		final CriteriaBuilder cb = em.getCriteriaBuilder();
-		final CriteriaQuery<T> cq = cb.createQuery(clazz);
-		final Root<T> rootEntry = cq.from(clazz);
-		final CriteriaQuery<T> all = cq.select(rootEntry);
-		final TypedQuery<T> allQuery = em.createQuery(all);
-		return allQuery.getResultList();
+		List<T> list = new ArrayList<>();
+		try {
+			em = LocalEntityManagerFactory.createEntityManager();
+			em.getTransaction().begin();
+			list = ((List<T>) em.createQuery("SELECT obj FROM " + clazz.getSimpleName() + " obj ORDER BY id").getResultList());
+			em.close();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			em.close();
+		}
+		return list;
 	}
 
 	@Override
 	public T create(final T entity) {
 		try {
+			em = LocalEntityManagerFactory.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(entity);
 			em.getTransaction().commit();
+			em.close();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
+			em.close();
 		}
 		return entity;
 	}
@@ -48,11 +64,14 @@ public abstract class AbstractJpaDao<T extends Serializable> extends AbstractDAO
 	@Override
 	public T update(final T entity) {
 		try {
+			em = LocalEntityManagerFactory.createEntityManager();
 			em.getTransaction().begin();
 			em.merge(entity);
 			em.getTransaction().commit();
+			em.close();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
+			em.close();
 		}
 		return entity;
 	}
@@ -60,16 +79,28 @@ public abstract class AbstractJpaDao<T extends Serializable> extends AbstractDAO
 	@Override
 	public void delete(final T entity) {
 		try {
+			em = LocalEntityManagerFactory.createEntityManager();
 			em.getTransaction().begin();
 			em.remove(entity);
 			em.getTransaction().commit();
+			em.close();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
+			em.close();
 		}
 	}
 
 	@Override
 	public void deleteById(final long entityId) {
-		delete(findById(entityId));
+		try {
+			em = LocalEntityManagerFactory.createEntityManager();
+			em.getTransaction().begin();
+			em.remove(em.find(clazz, Long.valueOf(entityId)));
+			em.getTransaction().commit();
+			em.close();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			em.close();
+		}
 	}
 }
