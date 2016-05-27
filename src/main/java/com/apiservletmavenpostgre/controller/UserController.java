@@ -55,6 +55,7 @@ public class UserController extends ServletBaseController {
 
 		} catch (Exception e) {
 			LOGGER.info(e.getMessage() + " - " + e.getCause());
+			resp.setStatus(500);
 			mapper.writeValue(resp.getOutputStream(), e);
 		}
 	}
@@ -84,9 +85,11 @@ public class UserController extends ServletBaseController {
 
 		try {
 			user = userService.create(user);
+			resp.setStatus(201);
 			mapper.writeValue(resp.getOutputStream(), user);
 		} catch (Exception e) {
 			LOGGER.info(e.getMessage() + " - " + e.getCause());
+			resp.setStatus(500);
 			mapper.writeValue(resp.getOutputStream(), e);
 		}
 	}
@@ -119,6 +122,7 @@ public class UserController extends ServletBaseController {
 			mapper.writeValue(resp.getOutputStream(), user);
 		} catch (Exception e) {
 			LOGGER.info(e.getMessage() + " - " + e.getCause());
+			resp.setStatus(500);
 			mapper.writeValue(resp.getOutputStream(), e);
 		}
 	}
@@ -142,6 +146,7 @@ public class UserController extends ServletBaseController {
 
 		} catch (Exception e) {
 			LOGGER.info(e.getMessage() + " - " + e.getCause());
+			resp.setStatus(500);
 			mapper.writeValue(resp.getOutputStream(), e);
 		}
 	}
