@@ -20,15 +20,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author eloi eloibilek@gmail.com
  */
 @WebServlet("/v1/users/*")
-public class UserController extends ServletBaseController {
+public class UserResource extends ServletBaseResource {
 
 	private static final long serialVersionUID = 1L;
 
-	public UserController() {
+	public UserResource() {
 		super();
 	}
 
-	static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
+	static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
 
 	@Inject
 	IUserService userService;

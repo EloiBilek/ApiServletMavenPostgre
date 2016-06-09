@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author eloi eloibilek@gmail.com
  */
-public class ServletBaseController extends HttpServlet {
+public class ServletBaseResource extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
