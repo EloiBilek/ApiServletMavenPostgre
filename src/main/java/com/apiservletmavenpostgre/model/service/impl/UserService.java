@@ -3,9 +3,9 @@ package com.apiservletmavenpostgre.model.service.impl;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import com.apiservletmavenpostgre.model.common.IOperations;
+import com.apiservletmavenpostgre.model.dao.IUserDAO;
 import com.apiservletmavenpostgre.model.entity.User;
-import com.apiservletmavenpostgre.model.persistence.IOperations;
-import com.apiservletmavenpostgre.model.persistence.dao.IUserDAO;
 import com.apiservletmavenpostgre.model.service.IUserService;
 import com.apiservletmavenpostgre.model.service.common.AbstractService;
 

@@ -1,12 +1,12 @@
 /**
  * 
  */
-package com.apiservletmavenpostgre.model.persistence.dao;
+package com.apiservletmavenpostgre.model.dao;
 
 import java.util.List;
 
+import com.apiservletmavenpostgre.model.common.IOperations;
 import com.apiservletmavenpostgre.model.entity.User;
-import com.apiservletmavenpostgre.model.persistence.IOperations;
 
 /**
  * @author eloi

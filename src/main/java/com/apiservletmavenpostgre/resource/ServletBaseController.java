@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.apiservletmavenpostgre.controller;
+package com.apiservletmavenpostgre.resource;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

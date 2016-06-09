@@ -1,4 +1,4 @@
-package com.apiservletmavenpostgre.model.persistence.dao.common;
+package com.apiservletmavenpostgre.model.dao.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import com.apiservletmavenpostgre.config.LocalEntityManagerFactory;
-import com.apiservletmavenpostgre.model.persistence.IOperations;
+import com.apiservletmavenpostgre.model.common.IOperations;
 
 /**
  * @author eloi eloibilek@gmail.com

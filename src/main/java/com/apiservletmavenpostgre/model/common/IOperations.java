@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.apiservletmavenpostgre.model.persistence;
+package com.apiservletmavenpostgre.model.common;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.apiservletmavenpostgre.model.persistence.dao.impl;
+package com.apiservletmavenpostgre.model.dao.impl;
 
+import com.apiservletmavenpostgre.model.dao.IUserDAO;
+import com.apiservletmavenpostgre.model.dao.common.AbstractJpaDao;
 import com.apiservletmavenpostgre.model.entity.User;
-import com.apiservletmavenpostgre.model.persistence.dao.IUserDAO;
-import com.apiservletmavenpostgre.model.persistence.dao.common.AbstractJpaDao;
 
 /**
  * @author eloi eloibilek@gmail.com

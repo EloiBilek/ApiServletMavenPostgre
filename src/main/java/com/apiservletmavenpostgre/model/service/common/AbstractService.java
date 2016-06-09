@@ -6,7 +6,7 @@ package com.apiservletmavenpostgre.model.service.common;
 import java.io.Serializable;
 import java.util.List;
 
-import com.apiservletmavenpostgre.model.persistence.IOperations;
+import com.apiservletmavenpostgre.model.common.IOperations;
 
 /**
  * @author eloi eloibilek@gmail.com
